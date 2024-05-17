@@ -1,7 +1,6 @@
 import {
   Badge,
   Box,
-  Button,
   Card,
   CardBody,
   CardFooter,
@@ -11,13 +10,12 @@ import {
   Select,
   Spinner,
   Stack,
-  Text,
+  Text
 } from "@chakra-ui/react";
-import LoadingTable from "../components/LoadingTable";
+import { Icon } from "@iconify-icon/react/dist/iconify.js";
+import { Link } from "react-router-dom";
 import useJobs from "../hooks/useJobs";
 import useQueryStore from "../state-management/query/store";
-import { Link } from "react-router-dom";
-import { Icon } from "@iconify-icon/react/dist/iconify.js";
 
 const JobBoard = () => {
   const { data, isLoading, error } = useJobs();

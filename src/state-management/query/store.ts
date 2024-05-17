@@ -12,7 +12,7 @@ interface QueryStore {
 
 const useQueryStore = create<QueryStore>((set) => ({
   query: {},
-  setKeyword: (keyword) => set((store) => ({ query: { keyword: keyword } })),
+  setKeyword: (keyword) => set(() => ({ query: { keyword: keyword } })),
   setSortOrder: (sort) => set(() => ({ query: { sortOrder: sort } })),
 }));
 
