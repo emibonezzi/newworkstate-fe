@@ -9,7 +9,6 @@ import {
   Divider,
   Heading,
   Input,
-  Select,
   Stack,
   Text,
   Tooltip,
