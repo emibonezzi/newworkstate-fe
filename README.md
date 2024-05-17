@@ -1,30 +1,29 @@
-# React + TypeScript + Vite
+# New York State Jobs Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a frontend application built with React, TypeScript, Chakra UI, React Query, and React Router. It provides a user-friendly interface for exploring job listings scraped from the New York State jobs website.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **main.tsx**: Entry point for the React application. It sets up providers for Chakra UI, React Query, and React Router.
+- **routes.tsx**: Defines the routes for the application, including the homepage and job board.
+- **components/Layout.tsx**: Layout component that includes the navigation, main content area, and footer.
+- **hooks/useJobs.ts**: Custom hook that fetches job data using React Query.
+- **pages/Homepage.tsx**: Homepage component with a welcome message and a link to the job board.
+- **pages/JobBoard.tsx**: Job board component that displays job listings with filters and search functionality.
+- **services/api-client.ts**: API client for making HTTP requests to the backend.
+- **state-management/query/store.ts**: State management for query parameters using Zustand.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js (18.x or higher)
+- npm or yarn
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Installing
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/newworkstate-fe.git
+   cd newworkstate-fe
+   ```
