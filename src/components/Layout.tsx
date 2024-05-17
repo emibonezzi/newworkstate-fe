@@ -50,7 +50,9 @@ const Layout = () => {
               rel="noreferrer"
               href="https://emilianobonezzi.com/"
             >
-              Emiliano Bonezzi.
+              <Text display="inline" textDecoration="underline">
+                Emiliano Bonezzi.
+              </Text>
             </a>
           </Text>
         </Box>
