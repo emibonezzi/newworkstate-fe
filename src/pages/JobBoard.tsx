@@ -66,7 +66,7 @@ const JobBoard = () => {
       >
         {error && <p>Error in fetching data from State Jobs NY</p>}
         {filteredData.map((job: any) => (
-          <Card bgColor="gray.700" maxW="sm">
+          <Card color="white" bgColor="gray.700" maxW="sm">
             <Box display="flex" justifyContent="end">
               <Badge maxW="max-content">{job.date}</Badge>
             </Box>
