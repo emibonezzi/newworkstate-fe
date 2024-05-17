@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://2f1hgmovog.execute-api.us-east-1.amazonaws.com",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 class APIClient {
