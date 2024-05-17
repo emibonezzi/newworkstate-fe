@@ -9,23 +9,26 @@ const Layout = () => {
           <Box
             display="grid"
             alignItems="center"
-            justifyItems="center"
-            gridTemplateColumns="repeat(3, 1fr)"
+            gridTemplateColumns="repeat(2, 1fr)"
           >
             <Heading letterSpacing="-1.8px" justifySelf="start">
               <Link to="/">New Work State</Link>
             </Heading>
             <ul>
-              <Box display="flex" gap="5" listStyleType="none">
+              <Box
+                display="flex"
+                gap="5"
+                justifyContent="end"
+                listStyleType="none"
+              >
                 <Link to="/">
                   <li>Home</li>
                 </Link>
-                <Link to="/about">
-                  <li>About</li>
+                <Link to="/jobs">
+                  <li>Job Board</li>
                 </Link>
               </Box>
             </ul>
-            <Text justifySelf="end">Github Repo</Text>
           </Box>
         </nav>
       </header>

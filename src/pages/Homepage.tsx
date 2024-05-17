@@ -14,11 +14,11 @@ function Homepage() {
         <Image src="https://upload.wikimedia.org/wikipedia/commons/e/ec/New_York_State_wordmark.svg" />
         <Box display="flex" flexDirection="column" gap="5">
           <Heading textAlign="right" fontSize="6rem" letterSpacing="-3px">
-            A better way to search for state jobs.
+            Discover Your Next State Job with Ease.
           </Heading>
           <Box display="flex" justifyContent="end">
             <Link to="/jobs">
-              <Button>See Job Board</Button>
+              <Button>Explore Job Listings</Button>
             </Link>
           </Box>
         </Box>
@@ -32,12 +32,11 @@ function Homepage() {
           gap={5}
           flexDir="column"
         >
-          <Heading fontSize="1.8rem">Filter by city, salary and more.</Heading>
+          <Heading fontSize="1.8rem">Customize Your Job Search.</Heading>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-            perferendis, deleniti distinctio aspernatur facere quasi dolor
-            voluptatibus aperiam quod error officia fugiat itaque exercitationem
-            beatae ex omnis excepturi ducimus. Doloremque?
+            Use our advanced filters to search for state jobs by city, salary
+            range, and other criteria. Tailor your search to find the perfect
+            job that meets your needs and preferences.
           </Text>
         </Box>
         <Box
@@ -47,12 +46,12 @@ function Homepage() {
           gap={5}
           flexDir="column"
         >
-          <Heading fontSize="1.8rem">Get important info right away.</Heading>
+          <Heading fontSize="1.8rem">Access Key Information Instantly.</Heading>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-            perferendis, deleniti distinctio aspernatur facere quasi dolor
-            voluptatibus aperiam quod error officia fugiat itaque exercitationem
-            beatae ex omnis excepturi ducimus. Doloremque?
+            Get all the important details you need about each job at a glance.
+            From salary ranges to job descriptions, our platform ensures you
+            have all the information necessary to make informed decisions
+            quickly.
           </Text>
         </Box>
         <Box
@@ -62,12 +61,11 @@ function Homepage() {
           gap={5}
           flexDir="column"
         >
-          <Heading fontSize="1.8rem">Better user experience.</Heading>
+          <Heading fontSize="1.8rem">Enhanced User Experience.</Heading>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-            perferendis, deleniti distinctio aspernatur facere quasi dolor
-            voluptatibus aperiam quod error officia fugiat itaque exercitationem
-            beatae ex omnis excepturi ducimus. Doloremque?
+            Our user-friendly interface makes job searching simple and
+            enjoyable. Easily navigate through job listings, apply filters, and
+            access detailed job descriptions seamlessly.
           </Text>
         </Box>
       </Box>

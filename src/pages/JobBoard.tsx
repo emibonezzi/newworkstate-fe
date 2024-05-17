@@ -9,6 +9,7 @@ import {
   Heading,
   Input,
   Select,
+  Spinner,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -22,7 +23,7 @@ const JobBoard = () => {
   const { data, isLoading, error } = useJobs();
   const { query, setKeyword } = useQueryStore();
 
-  if (isLoading) return <LoadingTable />;
+  if (isLoading) return <Spinner />;
 
   const filteredData = query.keyword
     ? data.filter((job: any) => {
@@ -61,6 +62,7 @@ const JobBoard = () => {
         gridTemplateColumns="repeat(3, 1fr)"
         justifyItems="center"
         rowGap={5}
+        mb={5}
       >
         {error && <p>Error in fetching data from State Jobs NY</p>}
         {filteredData.map((job: any) => (
