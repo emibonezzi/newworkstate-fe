@@ -1,5 +1,5 @@
 import { Box, Divider, Heading, Text } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
@@ -13,12 +13,16 @@ const Layout = () => {
             gridTemplateColumns="repeat(3, 1fr)"
           >
             <Heading letterSpacing="-1.8px" justifySelf="start">
-              New Work State
+              <Link to="/">New Work State</Link>
             </Heading>
             <ul>
               <Box display="flex" gap="5" listStyleType="none">
-                <li>Home</li>
-                <li>About</li>
+                <Link to="/">
+                  <li>Home</li>
+                </Link>
+                <Link to="/about">
+                  <li>About</li>
+                </Link>
               </Box>
             </ul>
             <Text justifySelf="end">Github Repo</Text>

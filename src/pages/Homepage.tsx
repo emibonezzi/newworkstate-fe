@@ -1,4 +1,5 @@
 import { Box, Button, Divider, Heading, Image, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   return (
@@ -16,7 +17,9 @@ function Homepage() {
             A better way to search for state jobs.
           </Heading>
           <Box display="flex" justifyContent="end">
-            <Button>See Job Board</Button>
+            <Link to="/jobs">
+              <Button>See Job Board</Button>
+            </Link>
           </Box>
         </Box>
       </Box>
