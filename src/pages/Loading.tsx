@@ -46,7 +46,7 @@ const Loading = () => {
         mb={5}
       >
         {loadingData.map(() => (
-          <Card w="sm">
+          <Card bgColor="gray.700" w="sm">
             <Box display="flex" justifyContent="end">
               <Skeleton h="20px" />
             </Box>
