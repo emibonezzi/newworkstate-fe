@@ -58,7 +58,7 @@ const JobBoard = () => {
       <Box mt={30} h="100dvh" border="1px" overflowY="scroll">
         <TableContainer p={5}>
           <Table variant="unstyled">
-            <TableCaption>Last 100 entries on NY State Jobs</TableCaption>
+            <TableCaption>Last 30 entries on NY State Jobs</TableCaption>
             <Thead>
               <Tr>
                 <Th>Date</Th>
@@ -86,7 +86,11 @@ const JobBoard = () => {
                   <Td>{job.salary_range.type}</Td>
                   <Td>{job.employment_type}</Td>
                   <Td>{job.city}</Td>
-                  <Td isNumeric>{job.vacancy_id}</Td>
+                  <Td isNumeric>
+                    <a target="_blank" href={job.url}>
+                      {job.vacancy_id}
+                    </a>
+                  </Td>
                   <Td isNumeric>
                     <a href={`mailto:${job.email_address}`}>
                       <Icon

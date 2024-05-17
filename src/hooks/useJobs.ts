@@ -9,6 +9,7 @@ const useJobs = () => {
     queryKey: ["jobs"],
     queryFn: () => apiClient.getJobs(),
     staleTime: ms("24h"),
+    refetchOnMount: false,
   });
 
   return { data, isLoading, error };
