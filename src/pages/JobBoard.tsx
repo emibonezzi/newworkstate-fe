@@ -63,9 +63,7 @@ const JobBoard = () => {
               <Tr>
                 <Th>Date</Th>
                 <Th>Title</Th>
-                <Th isNumeric>Salary Low</Th>
-                <Th isNumeric>Salary High</Th>
-                <Th isNumeric>Salary Type</Th>
+                <Th isNumeric>Salary</Th>
                 <Th>Type</Th>
                 <Th>City</Th>
                 <Th isNumeric>Vacancy ID</Th>
@@ -77,13 +75,12 @@ const JobBoard = () => {
                 <Tr>
                   <Td>{job.date}</Td>
                   <Td>
-                    {job.title.length > 20
-                      ? job.title.slice(0, 20) + "..."
+                    {job.title.length > 25
+                      ? job.title.slice(0, 25) + "..."
                       : job.title}
                   </Td>
-                  <Td isNumeric>${job.salary_range.low}</Td>
+
                   <Td isNumeric>${job.salary_range.high}</Td>
-                  <Td>{job.salary_range.type}</Td>
                   <Td>{job.employment_type}</Td>
                   <Td>{job.city}</Td>
                   <Td isNumeric>
