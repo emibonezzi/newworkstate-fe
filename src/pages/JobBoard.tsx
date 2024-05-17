@@ -1,9 +1,11 @@
 import {
   Badge,
   Box,
+  Button,
   Card,
   CardBody,
   CardFooter,
+  Divider,
   Heading,
   Input,
   Select,
@@ -13,6 +15,8 @@ import {
 import LoadingTable from "../components/LoadingTable";
 import useJobs from "../hooks/useJobs";
 import useQueryStore from "../state-management/query/store";
+import { Link } from "react-router-dom";
+import { Icon } from "@iconify-icon/react/dist/iconify.js";
 
 const JobBoard = () => {
   const { data, isLoading, error } = useJobs();
@@ -58,6 +62,7 @@ const JobBoard = () => {
         justifyItems="center"
         rowGap={5}
       >
+        {error && <p>Error in fetching data from State Jobs NY</p>}
         {filteredData.map((job: any) => (
           <Card maxW="sm">
             <Box display="flex" justifyContent="end">
@@ -78,7 +83,20 @@ const JobBoard = () => {
                 </Text>
               </Stack>
             </CardBody>
-            <CardFooter></CardFooter>
+            <Divider />
+            <CardFooter
+              display="grid"
+              justifyItems="center"
+              gridTemplateColumns="1fr 1fr"
+              fontSize="1.5rem"
+            >
+              <Link target="_blank" to={job.url}>
+                <Icon icon="mynaui:external-link" />
+              </Link>
+              <Link target="_blank" to={`mailto:${job.email_address}`}>
+                <Icon icon="mage:email" />
+              </Link>
+            </CardFooter>
           </Card>
         ))}
       </Box>

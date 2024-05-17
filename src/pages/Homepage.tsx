@@ -71,24 +71,6 @@ function Homepage() {
           </Text>
         </Box>
       </Box>
-      <Divider />
-      <Box
-        h="300px"
-        alignItems="center"
-        justifyContent="center"
-        display="grid"
-        gridTemplateColumns="1fr 1fr"
-      >
-        <Heading>Get contact info and email them in one click!</Heading>
-        <Box display="flex" justifyContent="center">
-          <Text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
-            perferendis, deleniti distinctio aspernatur facere quasi dolor
-            voluptatibus aperiam quod error officia fugiat itaque exercitationem
-            beatae ex omnis excepturi ducimus. Doloremque?
-          </Text>
-        </Box>
-      </Box>
     </>
   );
 }
