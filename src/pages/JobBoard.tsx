@@ -1,19 +1,15 @@
 import {
+  Badge,
   Box,
+  Card,
+  CardBody,
+  CardFooter,
   Heading,
   Input,
   Select,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
+  Stack,
   Text,
-  Th,
-  Thead,
-  Tr,
 } from "@chakra-ui/react";
-import { Icon } from "@iconify/react";
 import LoadingTable from "../components/LoadingTable";
 import useJobs from "../hooks/useJobs";
 import useQueryStore from "../state-management/query/store";
@@ -55,52 +51,36 @@ const JobBoard = () => {
           </Box>
         </Box>
       </Box>
-      <Box mt={30} h="100dvh" border="1px" overflowY="scroll">
-        <TableContainer p={5}>
-          <Table variant="unstyled">
-            <TableCaption>Last 30 entries on NY State Jobs</TableCaption>
-            <Thead>
-              <Tr>
-                <Th>Date</Th>
-                <Th>Title</Th>
-                <Th isNumeric>Salary</Th>
-                <Th>Type</Th>
-                <Th>City</Th>
-                <Th isNumeric>Vacancy ID</Th>
-                <Th>Email</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {filteredData.map((job: any) => (
-                <Tr>
-                  <Td>{job.date}</Td>
-                  <Td>
-                    {job.title.length > 25
-                      ? job.title.slice(0, 25) + "..."
-                      : job.title}
-                  </Td>
-
-                  <Td isNumeric>${job.salary_range.high}</Td>
-                  <Td>{job.employment_type}</Td>
-                  <Td>{job.city}</Td>
-                  <Td isNumeric>
-                    <a target="_blank" href={job.url}>
-                      {job.vacancy_id}
-                    </a>
-                  </Td>
-                  <Td isNumeric>
-                    <a href={`mailto:${job.email_address}`}>
-                      <Icon
-                        fontSize="30px"
-                        icon="icon-park-outline:send-email"
-                      />
-                    </a>{" "}
-                  </Td>
-                </Tr>
-              ))}
-            </Tbody>
-          </Table>
-        </TableContainer>
+      <Box
+        mt={30}
+        display="grid"
+        gridTemplateColumns="repeat(3, 1fr)"
+        justifyItems="center"
+        rowGap={5}
+      >
+        {filteredData.map((job: any) => (
+          <Card maxW="sm">
+            <Box display="flex" justifyContent="end">
+              <Badge maxW="max-content">{job.date}</Badge>
+            </Box>
+            <CardBody>
+              <Stack mt="6" spacing="2">
+                <Heading size="md">{job.title}</Heading>
+                <Text>{job.agency}</Text>
+                <Text opacity="0.5">{job.city}</Text>
+                <Text fontSize="0.9rem" opacity="0.5">
+                  ${job.salary_range.low} - ${job.salary_range.high}
+                </Text>
+                <Text>
+                  {job.duties_description && job.duties_description.length > 200
+                    ? job.duties_description.slice(0, 200) + "..."
+                    : job.duties_description}
+                </Text>
+              </Stack>
+            </CardBody>
+            <CardFooter></CardFooter>
+          </Card>
+        ))}
       </Box>
     </Box>
   );
