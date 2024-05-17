@@ -8,20 +8,20 @@ import {
   Heading,
   Input,
   Select,
-  Spinner,
   Stack,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { Icon } from "@iconify-icon/react/dist/iconify.js";
 import { Link } from "react-router-dom";
 import useJobs from "../hooks/useJobs";
 import useQueryStore from "../state-management/query/store";
+import Loading from "./Loading";
 
 const JobBoard = () => {
   const { data, isLoading, error } = useJobs();
   const { query, setKeyword } = useQueryStore();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <Loading />;
 
   const filteredData = query.keyword
     ? data.filter((job: any) => {
