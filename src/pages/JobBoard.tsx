@@ -5,6 +5,7 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Checkbox,
   Divider,
   Heading,
   Input,
@@ -38,13 +39,40 @@ const JobBoard = () => {
     <Box mt={50}>
       <Box display="grid" gridTemplateColumns="1fr 1fr" alignItems="center">
         <Heading fontSize="6em">Job Board</Heading>
-        <Box display="flex" gap={5} justifyContent="end">
+        <Box display="flex" gap={5} alignItems="center" justifyContent="end">
           <Box>
+            <Text>Location</Text>
+            <Stack
+              border="2px"
+              p={2}
+              rounded="10px"
+              mt={5}
+              spacing={5}
+              direction="row"
+            >
+              <Checkbox whiteSpace="nowrap" colorScheme="green">
+                Long Island
+              </Checkbox>
+              <Checkbox whiteSpace="nowrap" colorScheme="green">
+                Brooklyn
+              </Checkbox>
+              <Checkbox whiteSpace="nowrap" colorScheme="green">
+                Queens
+              </Checkbox>
+              <Checkbox whiteSpace="nowrap" colorScheme="green">
+                Staten Island
+              </Checkbox>
+              <Checkbox whiteSpace="nowrap" colorScheme="green">
+                Bronx
+              </Checkbox>
+            </Stack>
+          </Box>
+          {/*           <Box>
             <Text>Sort by</Text>
             <Select mt={3} w="200px">
               <option value=""></option>
             </Select>
-          </Box>
+          </Box> */}
           <Box>
             <Text>Search</Text>
             <Input
