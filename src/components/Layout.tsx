@@ -11,7 +11,11 @@ const Layout = () => {
             alignItems="center"
             gridTemplateColumns="repeat(2, 1fr)"
           >
-            <Heading letterSpacing="-1.8px" justifySelf="start">
+            <Heading
+              fontSize={{ base: "1.3rem", lg: "2rem" }}
+              letterSpacing="-1.8px"
+              justifySelf="start"
+            >
               <Link to="/">New Work State</Link>
             </Heading>
             <ul>

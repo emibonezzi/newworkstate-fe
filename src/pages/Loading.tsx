@@ -16,36 +16,40 @@ const Loading = () => {
   const loadingData = Array.from({ length: 9 }, (_, index) => index);
 
   return (
-    <Box mt={50}>
-      <Box display="grid" gridTemplateColumns="1fr 1fr" alignItems="center">
-        <Heading fontSize="6em">Job Board</Heading>
-        <Box display="flex" gap={5} alignItems="center" justifyContent="end">
+    <Box px={{ base: "20px", lg: "inherit" }} mt={50}>
+      <Box
+        display="grid"
+        gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+        alignItems="center"
+      >
+        <Heading fontSize={{ base: "2rem", lg: "6rem" }}>Job Board</Heading>
+        <Box
+          display="flex"
+          fontSize="0.9rem"
+          gap={5}
+          alignItems="center"
+          justifyContent={{ base: "start", lg: "end" }}
+        >
           <Box>
-            <Text>Available Locations</Text>
-            <Select disabled={true}></Select>
-          </Box>
-          {/*           <Box>
-            <Text>Sort by</Text>
-            <Select mt={3} w="200px">
-              <option value=""></option>
+            <Select mt={1}>
+              <option value="">All locations</option>
             </Select>
-          </Box> */}
+          </Box>
           <Box>
-            <Text>Search</Text>
-            <Input placeholder="Search keyword..." mt={3} w="200px"></Input>
+            <Input placeholder="Search keyword..." mt={1}></Input>
           </Box>
         </Box>
       </Box>
       <Box
         mt={30}
         display="grid"
-        gridTemplateColumns="repeat(3, 1fr)"
+        gridTemplateColumns={{ base: "1fr", lg: "repeat(3, 1fr)" }}
         justifyItems="center"
         rowGap={5}
         mb={5}
       >
         {loadingData.map(() => (
-          <Card bgColor="gray.700" w="sm">
+          <Card bgColor="gray.700" w="xs">
             <Box display="flex" justifyContent="end">
               <Skeleton h="20px" />
             </Box>

@@ -45,32 +45,33 @@ const JobBoard = () => {
   });
 
   return (
-    <Box mt={50}>
-      <Box display="grid" gridTemplateColumns="1fr 1fr" alignItems="center">
-        <Heading fontSize="6em">Job Board</Heading>
-        <Box display="flex" gap={5} alignItems="center" justifyContent="end">
+    <Box px={{ base: "20px", lg: "inherit" }} mt={50}>
+      <Box
+        display="grid"
+        gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+        alignItems="center"
+      >
+        <Heading fontSize={{ base: "2rem", lg: "6rem" }}>Job Board</Heading>
+        <Box
+          display="flex"
+          fontSize="0.9rem"
+          gap={5}
+          alignItems="center"
+          justifyContent={{ base: "start", lg: "end" }}
+        >
           <Box>
-            <Text>Available Locations</Text>
-            <Select onChange={(e) => setLocation(e.target.value)} mt={3}>
+            <Select onChange={(e) => setLocation(e.target.value)} mt={1}>
               <option value="">All locations</option>
               {availableLocations.map((location) => (
                 <option value={location}>{location}</option>
               ))}
             </Select>
           </Box>
-          {/*           <Box>
-            <Text>Sort by</Text>
-            <Select mt={3} w="200px">
-              <option value=""></option>
-            </Select>
-          </Box> */}
           <Box>
-            <Text>Search</Text>
             <Input
               onChange={(e) => setKeyword(e.target.value)}
               placeholder="Search keyword..."
-              mt={3}
-              w="200px"
+              mt={1}
             ></Input>
           </Box>
         </Box>
@@ -78,14 +79,14 @@ const JobBoard = () => {
       <Box
         mt={30}
         display="grid"
-        gridTemplateColumns="repeat(3, 1fr)"
+        gridTemplateColumns={{ base: "1fr", lg: "repeat(3, 1fr)" }}
         justifyItems="center"
         rowGap={5}
         mb={5}
       >
         {error && <p>Error in fetching data from State Jobs NY</p>}
         {filteredData?.map((job: any) => (
-          <Card color="white" bgColor="gray.700" maxW="sm">
+          <Card bgColor="gray.700" w={{ base: "xs", lg: "sm" }}>
             <Box display="flex" justifyContent="end">
               <Badge maxW="max-content">{job.date}</Badge>
             </Box>
@@ -101,27 +102,32 @@ const JobBoard = () => {
                 <Text fontSize="0.9rem" opacity="0.5">
                   ${job.salary_range.low} - ${job.salary_range.high}
                 </Text>
-                <Text>
+                <Text fontSize="0.9rem">
                   {job.duties_description && job.duties_description.length > 200
                     ? job.duties_description.slice(0, 200) + "..."
                     : job.duties_description}
                 </Text>
               </Stack>
-              <Tooltip label={job.minimum_qualifications}>
-                <Badge colorScheme="green" mt={6}>
-                  Minimum Qualifications
-                </Badge>
-              </Tooltip>
+
+              <Box display="flex" justifyContent="space-between">
+                <Tooltip label={job.minimum_qualifications}>
+                  <Badge colorScheme="green" mt={6}>
+                    Qualifications
+                  </Badge>
+                </Tooltip>
+                <Tooltip label={job.notes_on_applying}>
+                  <Badge colorScheme="red" mt={6}>
+                    Notes on applying
+                  </Badge>
+                </Tooltip>
+              </Box>
             </CardBody>
             <Divider />
-            <CardFooter
-              display="grid"
-              gridTemplateColumns="1fr 1fr"
-              fontSize="1.5rem"
-            >
-              <Stack direction="row" spacing={4}>
+            <CardFooter justifyContent="center">
+              <Box display="flex" gap={4} alignItems="center">
                 <Link target="_blank" to={job.url}>
                   <Button
+                    size={{ base: "sm", lg: "md" }}
                     leftIcon={<Icon icon="mynaui:external-link" />}
                     colorScheme="gray"
                     variant="solid"
@@ -131,6 +137,7 @@ const JobBoard = () => {
                 </Link>
                 <Link target="_blank" to={`mailto:${job.email_address}`}>
                   <Button
+                    size={{ base: "sm", lg: "md" }}
                     leftIcon={<Icon icon="mage:email" />}
                     colorScheme="gray"
                     variant="solid"
@@ -138,7 +145,19 @@ const JobBoard = () => {
                     Email
                   </Button>
                 </Link>
-              </Stack>
+                {job.telephone && (
+                  <Link target="_blank" to={`tel:${job.telephone}`}>
+                    <Button
+                      size={{ base: "sm", lg: "md" }}
+                      leftIcon={<Icon icon="mage:phone" />}
+                      colorScheme="gray"
+                      variant="solid"
+                    >
+                      Phone
+                    </Button>
+                  </Link>
+                )}
+              </Box>
             </CardFooter>
           </Card>
         ))}
