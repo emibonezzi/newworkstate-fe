@@ -8,7 +8,7 @@ import {
   Input,
   Select,
   Skeleton,
-  Stack
+  Stack,
 } from "@chakra-ui/react";
 
 const Loading = () => {
@@ -16,26 +16,36 @@ const Loading = () => {
 
   return (
     <Box px={{ base: "20px", lg: "inherit" }} mt={50}>
-      <Box
-        display="grid"
-        gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
-        alignItems="center"
-      >
-        <Heading fontSize={{ base: "2rem", lg: "6rem" }}>Job Board</Heading>
+      <Box display="grid" gridTemplateColumns="1fr" alignItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Heading fontSize={{ base: "2rem", lg: "6rem" }}>Job Board</Heading>
+          <Box>
+            <Input
+              disabled={true}
+              maxW="150px"
+              placeholder="Search keyword..."
+              mt={1}
+            ></Input>
+          </Box>
+        </Box>
         <Box
-          display="flex"
+          display="grid"
           fontSize="0.9rem"
+          mt={3}
           gap={5}
           alignItems="center"
-          justifyContent={{ base: "start", lg: "end" }}
+          justifyContent="end"
+          gridTemplateColumns={{ base: "1fr 1fr", lg: "200px 200px" }}
         >
           <Box>
-            <Select mt={1}>
+            <Select disabled={true} mt={1}>
               <option value="">All locations</option>
             </Select>
           </Box>
           <Box>
-            <Input placeholder="Search keyword..." mt={1}></Input>
+            <Select disabled={true} mt={1}>
+              <option value="">All categories</option>
+            </Select>
           </Box>
         </Box>
       </Box>
