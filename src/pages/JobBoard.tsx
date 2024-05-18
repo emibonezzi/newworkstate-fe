@@ -102,7 +102,7 @@ const JobBoard = () => {
                 <Text fontSize="0.9rem" opacity="0.5">
                   ${job.salary_range.low} - ${job.salary_range.high}
                 </Text>
-                <Text fontSize="0.9rem">
+                <Text>
                   {job.duties_description && job.duties_description.length > 200
                     ? job.duties_description.slice(0, 200) + "..."
                     : job.duties_description}
