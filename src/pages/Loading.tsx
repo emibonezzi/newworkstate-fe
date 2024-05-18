@@ -8,8 +8,7 @@ import {
   Input,
   Select,
   Skeleton,
-  Stack,
-  Text,
+  Stack
 } from "@chakra-ui/react";
 
 const Loading = () => {
