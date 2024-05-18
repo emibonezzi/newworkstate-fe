@@ -13,7 +13,7 @@ const Layout = () => {
           >
             <Heading
               fontSize={{ base: "1.3rem", lg: "2rem" }}
-              letterSpacing="-1.8px"
+              letterSpacing={{ base: "-1.3px", lg: "-1.8px" }}
               justifySelf="start"
             >
               <Link to="/">New Work State</Link>
