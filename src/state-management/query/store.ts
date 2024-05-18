@@ -4,16 +4,23 @@ import { create } from "zustand";
 interface QueryStore {
   query: {
     keyword?: string;
-    sortOrder?: string;
+    location?: string;
   };
   setKeyword: (keyword: string) => void;
-  setSortOrder: (sort: string) => void;
+  setLocation: (location: string) => void;
 }
 
 const useQueryStore = create<QueryStore>((set) => ({
   query: {},
-  setKeyword: (keyword) => set(() => ({ query: { keyword: keyword } })),
-  setSortOrder: (sort) => set(() => ({ query: { sortOrder: sort } })),
+  setKeyword: (keyword) =>
+    set((store) => ({ query: { ...store.query, keyword: keyword } })),
+  setLocation: (location) =>
+    set((store) => ({
+      query: {
+        ...store.query,
+        location: location,
+      },
+    })),
 }));
 
 if (process.env.NODE_ENV === "development") {

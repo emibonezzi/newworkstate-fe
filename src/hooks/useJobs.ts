@@ -5,7 +5,7 @@ import ms from "ms";
 const apiClient = new APIClient("/dev/jobs");
 
 const useJobs = () => {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error } = useQuery<Job[]>({
     queryKey: ["jobs"],
     queryFn: () => apiClient.getJobs(),
     staleTime: ms("24h"),

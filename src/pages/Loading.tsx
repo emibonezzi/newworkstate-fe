@@ -19,21 +19,20 @@ const Loading = () => {
     <Box mt={50}>
       <Box display="grid" gridTemplateColumns="1fr 1fr" alignItems="center">
         <Heading fontSize="6em">Job Board</Heading>
-        <Box display="flex" gap={5} justifyContent="end">
+        <Box display="flex" gap={5} alignItems="center" justifyContent="end">
           <Box>
+            <Text>Available Locations</Text>
+            <Select disabled={true}></Select>
+          </Box>
+          {/*           <Box>
             <Text>Sort by</Text>
-            <Select disabled={true} mt={3} w="200px">
+            <Select mt={3} w="200px">
               <option value=""></option>
             </Select>
-          </Box>
+          </Box> */}
           <Box>
             <Text>Search</Text>
-            <Input
-              placeholder="Search keyword..."
-              mt={3}
-              w="200px"
-              disabled={true}
-            ></Input>
+            <Input placeholder="Search keyword..." mt={3} w="200px"></Input>
           </Box>
         </Box>
       </Box>

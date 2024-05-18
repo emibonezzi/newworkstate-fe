@@ -9,6 +9,7 @@ import {
   Divider,
   Heading,
   Input,
+  Select,
   Stack,
   Text,
   Tooltip,
@@ -21,18 +22,28 @@ import Loading from "./Loading";
 
 const JobBoard = () => {
   const { data, isLoading, error } = useJobs();
-  const { query, setKeyword } = useQueryStore();
+  const { query, setKeyword, setLocation } = useQueryStore();
 
   if (isLoading) return <Loading />;
 
-  const filteredData = query.keyword
-    ? data.filter((job: any) => {
-        const regex = new RegExp(`.*${query.keyword}.*`, "i");
-        if (regex.test(job.title) || regex.test(job.city)) {
-          return job;
-        }
-      })
-    : data;
+  const availableLocations = [...new Set(data?.map((job) => job.city))];
+
+  const filteredData = data?.filter((job: any) => {
+    let matches = true;
+
+    if (query.keyword) {
+      const keywordRegex = new RegExp(`.*${query.keyword}.*`, "i");
+      matches =
+        matches &&
+        (keywordRegex.test(job.title) || keywordRegex.test(job.city));
+    }
+
+    if (query.location) {
+      matches = matches && job.city === query.location;
+    }
+
+    return matches;
+  });
 
   return (
     <Box mt={50}>
@@ -40,31 +51,13 @@ const JobBoard = () => {
         <Heading fontSize="6em">Job Board</Heading>
         <Box display="flex" gap={5} alignItems="center" justifyContent="end">
           <Box>
-            <Text>Location</Text>
-            <Stack
-              border="2px"
-              p={2}
-              rounded="10px"
-              mt={5}
-              spacing={5}
-              direction="row"
-            >
-              <Checkbox whiteSpace="nowrap" colorScheme="green">
-                Long Island
-              </Checkbox>
-              <Checkbox whiteSpace="nowrap" colorScheme="green">
-                Brooklyn
-              </Checkbox>
-              <Checkbox whiteSpace="nowrap" colorScheme="green">
-                Queens
-              </Checkbox>
-              <Checkbox whiteSpace="nowrap" colorScheme="green">
-                Staten Island
-              </Checkbox>
-              <Checkbox whiteSpace="nowrap" colorScheme="green">
-                Bronx
-              </Checkbox>
-            </Stack>
+            <Text>Available Locations</Text>
+            <Select onChange={(e) => setLocation(e.target.value)} mt={3}>
+              <option value="">All locations</option>
+              {availableLocations.map((location) => (
+                <option value={location}>{location}</option>
+              ))}
+            </Select>
           </Box>
           {/*           <Box>
             <Text>Sort by</Text>
@@ -92,7 +85,7 @@ const JobBoard = () => {
         mb={5}
       >
         {error && <p>Error in fetching data from State Jobs NY</p>}
-        {filteredData.map((job: any) => (
+        {filteredData?.map((job: any) => (
           <Card color="white" bgColor="gray.700" maxW="sm">
             <Box display="flex" justifyContent="end">
               <Badge maxW="max-content">{job.date}</Badge>
