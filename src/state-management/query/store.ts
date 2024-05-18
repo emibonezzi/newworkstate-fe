@@ -5,9 +5,11 @@ interface QueryStore {
   query: {
     keyword?: string;
     location?: string;
+    category?: string;
   };
   setKeyword: (keyword: string) => void;
   setLocation: (location: string) => void;
+  setCategory: (category: string) => void;
 }
 
 const useQueryStore = create<QueryStore>((set) => ({
@@ -19,6 +21,13 @@ const useQueryStore = create<QueryStore>((set) => ({
       query: {
         ...store.query,
         location: location,
+      },
+    })),
+  setCategory: (category) =>
+    set((store) => ({
+      query: {
+        ...store.query,
+        category: category,
       },
     })),
 }));

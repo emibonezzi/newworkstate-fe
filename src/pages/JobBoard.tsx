@@ -21,11 +21,14 @@ import Loading from "./Loading";
 
 const JobBoard = () => {
   const { data, isLoading, error } = useJobs();
-  const { query, setKeyword, setLocation } = useQueryStore();
+  const { query, setKeyword, setLocation, setCategory } = useQueryStore();
 
   if (isLoading) return <Loading />;
 
   const availableLocations = [...new Set(data?.map((job) => job.city))];
+  const availableCategories = [
+    ...new Set(data?.map((job) => job.occupational_category)),
+  ];
 
   const filteredData = data?.filter((job: any) => {
     let matches = true;
@@ -41,23 +44,35 @@ const JobBoard = () => {
       matches = matches && job.city === query.location;
     }
 
+    if (query.category) {
+      matches = matches && job.occupational_category === query.category;
+    }
+
     return matches;
   });
 
   return (
     <Box px={{ base: "20px", lg: "inherit" }} mt={50}>
-      <Box
-        display="grid"
-        gridTemplateColumns={{ base: "1fr", lg: "1fr 1fr" }}
-        alignItems="center"
-      >
-        <Heading fontSize={{ base: "2rem", lg: "6rem" }}>Job Board</Heading>
+      <Box display="grid" gridTemplateColumns="1fr" alignItems="center">
+        <Box display="flex" justifyContent="space-between" alignItems="center">
+          <Heading fontSize={{ base: "2rem", lg: "6rem" }}>Job Board</Heading>
+          <Box>
+            <Input
+              maxW="150px"
+              onChange={(e) => setKeyword(e.target.value)}
+              placeholder="Search keyword..."
+              mt={1}
+            ></Input>
+          </Box>
+        </Box>
         <Box
-          display="flex"
+          display="grid"
           fontSize="0.9rem"
+          mt={3}
           gap={5}
           alignItems="center"
-          justifyContent={{ base: "start", lg: "end" }}
+          justifyContent="end"
+          gridTemplateColumns={{ base: "1fr 1fr", lg: "200px 200px" }}
         >
           <Box>
             <Select onChange={(e) => setLocation(e.target.value)} mt={1}>
@@ -68,11 +83,12 @@ const JobBoard = () => {
             </Select>
           </Box>
           <Box>
-            <Input
-              onChange={(e) => setKeyword(e.target.value)}
-              placeholder="Search keyword..."
-              mt={1}
-            ></Input>
+            <Select onChange={(e) => setCategory(e.target.value)} mt={1}>
+              <option value="">All categories</option>
+              {availableCategories.map((category) => (
+                <option value={category}>{category}</option>
+              ))}
+            </Select>
           </Box>
         </Box>
       </Box>
